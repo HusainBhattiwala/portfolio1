@@ -14,45 +14,39 @@ const Sidebar = () => {
   const { showMenu } = useMenu();
   return (
     <AnimatePresence>
-      <>
-        {showMenu ? (
-          <aside
-            className={`${
-              showMenu ? "flex" : "hidden"
-            } lg:flex h-screen fixed w-screen sm:w-[300px] z-30`}
-          >
-            {/* sidebar container */}
-            <div className='toggle flex flex-col lg:m-5 w-full'>
-              <Logo />
-              <Menu />
-            </div>
-          </aside>
-        ) : (
-          <motion.aside
-            initial='initial'
-            animate='final'
-            exit={{ x: -100, opacity: 0 }}
-            variants={sideBarVariants}
-            transition={{
-              type: "spring",
-              stiffness: 100,
-              ease: "easeOut",
-              duration: 0.5,
-              delay: 0.3,
-            }}
-            className={`${
-              showMenu ? "flex" : "hidden"
-            } lg:flex h-screen fixed w-screen sm:w-[300px] z-30`}
-          >
-            {/* sidebar container */}
+      {showMenu ? (
+        <aside
+          className={`${
+            showMenu ? "flex" : "hidden"
+          } lg:flex h-screen fixed w-screen sm:w-[300px] z-30`}
+        >
+          {/* Sidebar Container */}
 
-            <div className='toggle flex flex-col lg:m-5 w-full'>
-              <Logo />
-              <Menu />
-            </div>
-          </motion.aside>
-        )}
-      </>
+          <div className='toggle flex flex-col lg:m-5 w-full'>
+            <Logo />
+            <Menu />
+          </div>
+        </aside>
+      ) : (
+        <motion.aside
+          key='menu'
+          initial='initial'
+          animate='final'
+          exit='initial'
+          variants={sideBarVariants}
+          transition={{ ease: "easeOut", duration: 0.5, delay: 0.3 }}
+          className={`${
+            showMenu ? "flex" : "hidden"
+          } lg:flex h-screen fixed w-screen sm:w-[300px] z-30`}
+        >
+          {/* Sidebar Container */}
+
+          <div className='toggle flex flex-col lg:m-5 w-full'>
+            <Logo />
+            <Menu />
+          </div>
+        </motion.aside>
+      )}
     </AnimatePresence>
   );
 };

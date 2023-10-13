@@ -28,8 +28,10 @@ const Menu = ({}) => {
   const { showMenuVisibility } = useMenu();
   return (
     <motion.div
+      key='menu'
       initial='initial'
       animate='final'
+      exit='initial'
       variants={sideBarVariants}
       transition={{ ease: "easeOut", duration: 0.5, delay: 0.3 }}
       className='flex relative flex-col h-full p-5 bg-cardPrimary text-primary rounded-lg w-full overflow-y-auto pb-20 md:pb-5'

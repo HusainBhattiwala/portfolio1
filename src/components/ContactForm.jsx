@@ -7,6 +7,7 @@ import { X } from "lucide-react";
 import { toast } from "react-hot-toast";
 import Spinner from "./Spinner";
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const ContactForm = ({}) => {
   const { showForm, setFormVisibility } = useContact();
@@ -46,51 +47,65 @@ const ContactForm = ({}) => {
       triggerEmail();
     }
   };
+
+  const contactVariants = {
+    initial: { y: -200, opacity: 0 },
+    final: { y: 0, opacity: 1 },
+  };
+
   return (
     <>
-      {showForm && (
-        <div
-          className='h-screen bg-blur backdrop-filter backdrop-blur-sm bg-[rgba(0,0,0,0.9)] w-screen fixed z-40 flex items-center justify-center'
-          onClick={() => setFormVisibility()}
-        >
-          <X className='text-primary absolute right-5 top-5 cursor-pointer' />
-          <form
-            method='POST'
-            onSubmit={handleSubmit}
-            onClick={handleFormClick}
-            className='grid gap-5 w-96 p-5 bg-cardPrimary rounded-lg text-info shadow-lg relative'
+      <AnimatePresence>
+        {showForm && (
+          <motion.div
+            key='contact-form'
+            initial='initial'
+            animate='final'
+            exit='initial'
+            variants={contactVariants}
+            transition={{ ease: "easeOut", duration: 0.5 }}
+            className='h-screen bg-blur backdrop-filter backdrop-blur-sm bg-[rgba(0,0,0,0.9)] w-screen fixed z-40 flex items-center justify-center'
+            onClick={() => setFormVisibility()}
           >
-            <Label
-              readInput={readInput}
-              value={formData.name}
-              name='name'
-              label='Full Name'
-            />
-            <Label
-              readInput={readInput}
-              value={formData.email}
-              name='email'
-              label='Email'
-              type='email'
-            />
-            <Label
-              readInput={readInput}
-              value={formData.message}
-              name='message'
-              label='Message'
-              type='textarea'
-            />
-            <Button
-              disabled={loader}
-              variant='highlight'
-              sizes='medium'
-              className='w-full'
+            <X className='text-primary absolute right-5 top-5 cursor-pointer' />
+            <form
+              method='POST'
+              onSubmit={handleSubmit}
+              onClick={handleFormClick}
+              className='grid gap-5 w-96 p-5 bg-cardPrimary rounded-lg text-info shadow-lg relative'
             >
-              {loader ? <Spinner /> : "Submit"}
-            </Button>
-          </form>
-        </div>
-      )}
+              <Label
+                readInput={readInput}
+                value={formData.name}
+                name='name'
+                label='Full Name'
+              />
+              <Label
+                readInput={readInput}
+                value={formData.email}
+                name='email'
+                label='Email'
+                type='email'
+              />
+              <Label
+                readInput={readInput}
+                value={formData.message}
+                name='message'
+                label='Message'
+                type='textarea'
+              />
+              <Button
+                disabled={loader}
+                variant='highlight'
+                sizes='medium'
+                className='w-full'
+              >
+                {loader ? <Spinner /> : "Submit"}
+              </Button>
+            </form>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
