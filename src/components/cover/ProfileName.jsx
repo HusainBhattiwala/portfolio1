@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const ProfileName = ({}) => {
   const btnVariants = {
     hidden: { opacity: 0, scale: 0.5 },
-    visible: { opacity: 1, scale: 1 },
+    visible: { opacity: 1, scale: [0.8, 1.3, 1] },
   };
 
   return (
@@ -18,7 +18,7 @@ const ProfileName = ({}) => {
         variants={btnVariants}
         transition={{
           type: "spring",
-          duration: 1,
+          duration: 0.7,
         }}
         className='flex flex-row'
       >
@@ -30,7 +30,7 @@ const ProfileName = ({}) => {
         variants={btnVariants}
         transition={{
           type: "spring",
-          duration: 1,
+          duration: 0.7,
         }}
         className='text-sm font-thin flex justify-between items-center'
       >

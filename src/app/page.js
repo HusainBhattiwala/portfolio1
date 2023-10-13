@@ -1,3 +1,5 @@
+"use client";
+import ContactForm from "@/components/ContactForm";
 import Cover from "@/components/Cover";
 import CardSection from "@/components/sections/CardSection";
 import ProjectsCardSection from "@/components/sections/ProjectsCardSection";
@@ -8,8 +10,30 @@ import {
   otherCards,
   projectCard,
 } from "@/components/utils/Data";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 export default function Home() {
+  useEffect(() => {
+    toast.success(
+      <div className='font-bold pt-3 pb-3 text-lg flex items-center justify-center text-gray-100'>
+        Welcome to my Portfolio!
+      </div>,
+      {
+        position: "top-center",
+        style: {
+          background: "#2bd576",
+          color: "white",
+        },
+        icon: "🚀",
+        iconTheme: {
+          fontSize: "50px", // Adjust the size as needed
+        },
+      }
+    );
+
+    return () => toast.remove();
+  }, []);
   return (
     <div>
       <Cover />

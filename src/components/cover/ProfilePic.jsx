@@ -15,7 +15,7 @@ const ProfilePic = ({}) => {
       variants={imgVariants}
       transition={{
         type: "spring",
-        duration: 1,
+        duration: 0.7,
       }}
       className=''
     >
