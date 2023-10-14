@@ -35,7 +35,7 @@ const Intro = ({}) => {
         <div className='text-secondary text-sm mt-2 md:mt-0  max-w-[500px]'>
           Welcome to the portfolio of Husain Bhattiwala, a passionate Full Stack
           Developer! With expertise in cutting-edge technologies like React
-          Three Fiber, Next.js 13.5, and the MERN stack, I'm dedicated to
+          Three Fiber, Next.js 13.5, and the MERN stack, I&apos;m dedicated to
           crafting immersive web experiences. My proficiency extends to MongoDB
           and REST API development, enabling me to create seamless, data-driven
           applications. Explore my work and journey through the digital world of
