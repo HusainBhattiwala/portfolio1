@@ -2,6 +2,7 @@
 import ContactForm from "@/components/ContactForm";
 import Cover from "@/components/Cover";
 import CardSection from "@/components/sections/CardSection";
+import Hero from "@/components/sections/Hero";
 import ProjectsCardSection from "@/components/sections/ProjectsCardSection";
 import {
   backendCard,
@@ -37,7 +38,7 @@ export default function Home() {
   return (
     <div>
       <Cover />
-      {/* Hero */}
+      <Hero />
       <div className='flex flex-col gap-10 lg:px-10'>
         <ProjectsCardSection title='Projects' data={projectCard} />{" "}
         <CardSection title='Frontend' data={frontendCard} />
