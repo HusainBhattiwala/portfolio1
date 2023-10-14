@@ -79,6 +79,14 @@ export const frontendCard = [
     snippetCount: 1128,
     progress: 80,
   },
+  {
+    id: 6,
+    title: "Framer Motion",
+    src: "/tech/frontend/framerMotion.jpg",
+    exp: "1 day ago",
+    snippetCount: 1128,
+    progress: 70,
+  },
 ];
 
 export const backendCard = [
